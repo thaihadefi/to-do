@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  
+  .form-container
+    form(method='POST', action='/task')
+      .form-group
+        label(for='title') Task Title:
+        input(type='text', id='title', name='title', required, placeholder='Enter task title')
+      
+      .form-group
+        label(for='user') Assigned to:
+        input(type='text', id='user', name='user', required, placeholder='Enter user name')
+      
+      .form-actions
+        a.btn.btn-secondary(href='/') Cancel
+        button.btn(type='submit') Create Task
