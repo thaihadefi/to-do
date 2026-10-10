@@ -49,6 +49,14 @@ h1 {
   box-shadow: 0 4px 8px rgba(0,87,183,0.3);
 }
 
+.btn[disabled],
+.btn.is-loading {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
 .btn-danger {
   background: #e74c3c;
 }

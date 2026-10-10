@@ -17,6 +17,10 @@ module.exports.createTask = async ({ title, user }) => {
   return await newTask.save();
 };
 
+module.exports.updateTask = async (id, updateData) => {
+  return await TaskModel.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+};
+
 module.exports.markTaskDone = async (id) => {
   return await TaskModel.findByIdAndUpdate(id, { isDone: true }, { new: true });
 };
@@ -24,3 +28,4 @@ module.exports.markTaskDone = async (id) => {
 module.exports.deleteTask = async (id) => {
   return await TaskModel.findByIdAndDelete(id);
 };
+

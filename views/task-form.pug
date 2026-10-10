@@ -4,7 +4,7 @@ block content
   h1= title
   
   .form-container
-    form(method='POST', action='/task')
+    form(method='POST', action='/api/tasks', id='taskCreateForm')
       .form-group
         label(for='title') Task Title:
         input(type='text', id='title', name='title', required, placeholder='Enter task title')

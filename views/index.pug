@@ -9,16 +9,27 @@ block content
   if tasks && tasks.length > 0
     ul.task-list
       each task in tasks
-        li.task-item(class=task.isDone ? 'done' : '')
+        li.task-item(class=task.isDone ? 'done' : '', id=`task-${task._id}`)
           .task-info
             .task-title(class=task.isDone ? 'done' : '')= task.title
             .task-user by #{task.user}
           .task-actions
             if !task.isDone
-              form(method='POST', action=`/task/${task._id}/done`)
-                button.btn.btn-success(type='submit') Mark Done
-            form(method='POST', action=`/task/${task._id}/delete`)
-              button.btn.btn-danger(type='submit') Delete
+              button.btn.btn-success(
+                type='button'
+                button-api
+                data-method='PATCH'
+                data-api=`/api/tasks/${task._id}`
+                data-payload=JSON.stringify({ isDone: true })
+                title='Mark Done'
+              ) Mark Done
+            button.btn.btn-danger(
+              type='button'
+              button-api
+              data-method='DELETE'
+              data-api=`/api/tasks/${task._id}`
+              title='Delete'
+            ) Delete
   else
     .empty-state
       p No tasks yet!
